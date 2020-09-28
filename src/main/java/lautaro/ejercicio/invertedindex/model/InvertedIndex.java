@@ -1,11 +1,19 @@
 package lautaro.ejercicio.invertedindex.model;
 
+import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+@Component
 public class InvertedIndex implements Index {
 
     private Map<String, HashSet<String>> wordToDocumentMap;
+
+    public InvertedIndex() {
+        wordToDocumentMap = new HashMap<>();
+    }
 
     @Override
     public void buildIndex(String... phrases) {
