@@ -4,7 +4,9 @@ import lautaro.ejercicio.invertedindex.Controller.IndexController;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 
 /**
@@ -25,15 +27,16 @@ public class InvertedIndex implements Index {
 
     /**
      * Este metodo recibe una frase y la añade al indice invertido
+     *
      * @param phrase frase a indexar
      */
     @Override
     public void buildIndex(String phrase) {
         String[] words;
-            words = getWords(phrase.toLowerCase());
-            for (String word : words) {
-                addWord(word, phrase);
-            }
+        words = getWords(phrase.toLowerCase());
+        for (String word : words) {
+            addWord(word, phrase);
+        }
     }
 
     /**
@@ -45,7 +48,8 @@ public class InvertedIndex implements Index {
      * @return String[] Array con las palabras de la frase
      */
     private String[] getWords(String phrase) {
-        phrase = phrase.replaceAll("[^A-Za-z0-9\\s]", "").trim();;
+        phrase = phrase.replaceAll("[^A-Za-z0-9\\s]", "").trim();
+        ;
         String[] words = phrase.split(" ");
         return words;
     }
@@ -57,7 +61,7 @@ public class InvertedIndex implements Index {
      * correspondiente a la palabra. Si no estuviese indexada la palabra, primero inicializa
      * el HashSet y luego le agrega la frase.
      *
-     * @param word palabra a indexar
+     * @param word   palabra a indexar
      * @param phrase frase donde aparece la palabra.
      */
     private void addWord(String word, String phrase) {
@@ -81,15 +85,15 @@ public class InvertedIndex implements Index {
         word = word.trim().toLowerCase().replaceAll("[^A-Za-z0-9\\s]", "");
         HashSet<String> hashSet = wordToDocumentMap.get(word);
         if (hashSet == null) {
-            LOGGER.warn("No se encontro referencia a la palabra "+word);
+            LOGGER.warn("No se encontro referencia a la palabra " + word);
             return null;
         }
         return hashSet.toArray(new String[0]);
     }
 
     @Override
-    public int getSize(){
-        if(wordToDocumentMap == null) {
+    public int getSize() {
+        if (wordToDocumentMap == null) {
             return 0;
         }
         return wordToDocumentMap.size();

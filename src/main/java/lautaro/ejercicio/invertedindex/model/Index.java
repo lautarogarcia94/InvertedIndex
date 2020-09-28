@@ -23,6 +23,7 @@ public interface Index {
 
     /**
      * Devuelve un int con el tamaño del indice
+     *
      * @return int
      */
     int getSize();

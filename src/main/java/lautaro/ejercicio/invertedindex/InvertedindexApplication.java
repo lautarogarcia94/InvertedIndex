@@ -29,15 +29,12 @@ public class InvertedindexApplication {
         String[] results = controller.get("muSIc");
 
         // Debe mostrar 2
-     //   System.out.println(results.length);
+        System.out.println(results.length);
 
         // Debe mostrar [".... music, writes Peter Conrad","Another book with music related ..."]
-      //  System.out.println(Arrays.toString(results));
+        System.out.println(Arrays.toString(results));
 
-       /* results = controller.get(null);
-        results = controller.get("");
-        results = controller.get("aaacccHighfrecuency..");
-*/
+
     }
 
 }
