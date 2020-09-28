@@ -91,6 +91,11 @@ public class InvertedIndex implements Index {
         return hashSet.toArray(new String[0]);
     }
 
+    /**
+     * Devuelve el tamaño del indice. En caso que el indice no este inicializado
+     * devuelve 0.
+     * @return int
+     */
     @Override
     public int getSize() {
         if (wordToDocumentMap == null) {

@@ -38,7 +38,7 @@ public class InvertedindexApplication {
 
     }
 
-    
+
     private static void imprimir(String word, String[] phrases) {
         if (phrases != null) {
             LOGGER.info("La palabra " + word + " aparece en " + phrases.length + " frases"); //Loguea en cuantas frases se encuentra la palabra
