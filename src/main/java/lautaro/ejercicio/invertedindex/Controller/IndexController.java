@@ -20,7 +20,23 @@ public class IndexController {
     }
 
     public void buildIndex(String[] phrases){
-        invertedIndex.buildIndex(phrases);
+
+        if(phrases.length == 0){
+            LOGGER.error("La frase a indexar es nula.");
+            return;
+        }
+        for (String phrase: phrases) {
+            if(phrase == null){
+                LOGGER.error("La frase a indexar es nula.");
+                continue;
+            } else if( phrase.isEmpty()){
+                LOGGER.warn("La frase a indexar esta vacia.");
+                continue;
+            }else{
+                invertedIndex.buildIndex(phrase);
+                LOGGER.info("Se indexo la frase: "+phrase);
+            }
+        }
     }
 
     public String[] get(String word){

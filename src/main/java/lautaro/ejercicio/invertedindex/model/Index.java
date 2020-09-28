@@ -2,7 +2,7 @@ package lautaro.ejercicio.invertedindex.model;
 
 public interface Index {
 
-    void buildIndex(String... phrases);
+    void buildIndex(String phrase);
 
     String[] get(String word);
 }

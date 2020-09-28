@@ -20,14 +20,14 @@ public class InvertedIndex implements Index {
     }
 
     @Override
-    public void buildIndex(String... phrases) {
+    public void buildIndex(String phrase) {
+
         String[] words;
-        for (String phrase : phrases) {
-            words = getWords(phrase);
+            words = getWords(phrase.toLowerCase());
             for (String word : words) {
                 addWord(word, phrase);
             }
-        }
+
     }
 
     private String[] getWords(String phrase) {

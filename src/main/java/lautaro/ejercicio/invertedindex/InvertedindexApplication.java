@@ -20,12 +20,13 @@ public class InvertedindexApplication {
                 "Fatima Bhutto on Malala Yousafzai's fearless and still-controversial memoir",
                 "Grisham's sequel to A Time to Kill is a solid courtroom drama about racial prejudice marred by a flawless white hero, writes John O'Connell",
                 "This strange repackaging of bits and pieces does the Man Booker winner no favours, says Sam Leith",
-                "Another book with music related content"
+                "Another book with music related content",
+                ""
         };
 
         controller.buildIndex(data);
 
-        String[] results = controller.get("music");
+        String[] results = controller.get("muSIc");
 
         // Debe mostrar 2
         System.out.println(results.length);
@@ -33,10 +34,10 @@ public class InvertedindexApplication {
         // Debe mostrar [".... music, writes Peter Conrad","Another book with music related ..."]
         System.out.println(Arrays.toString(results));
 
-        results = controller.get(null);
+       /* results = controller.get(null);
         results = controller.get("");
         results = controller.get("aaacccHighfrecuency..");
-
+*/
     }
 
 }
