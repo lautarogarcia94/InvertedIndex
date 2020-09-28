@@ -2,6 +2,7 @@ package lautaro.ejercicio.invertedindex.Controller;
 
 
 import lautaro.ejercicio.invertedindex.model.Index;
+import lautaro.ejercicio.invertedindex.model.InvertedIndex;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,10 @@ public class IndexController {
     }
 
     public void buildIndex(String[] phrases){
-
+        if(phrases == null){
+            System.out.println("lpm");
+            return;
+        }
         if(phrases.length == 0){
             LOGGER.error("La frase a indexar es nula.");
             return;
@@ -37,6 +41,11 @@ public class IndexController {
                 LOGGER.info("Se indexo la frase: "+phrase);
             }
         }
+    }
+
+
+    public int getSize(){
+      return  invertedIndex.getSize();
     }
 
     public String[] get(String word){

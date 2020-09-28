@@ -4,9 +4,7 @@ import lautaro.ejercicio.invertedindex.Controller.IndexController;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class InvertedIndex implements Index {
@@ -55,5 +53,13 @@ public class InvertedIndex implements Index {
             return null;
         }
         return hashSet.toArray(new String[0]);
+    }
+
+    @Override
+    public int getSize(){
+        if(wordToDocumentMap == null) {
+            return 0;
+        }
+        return wordToDocumentMap.size();
     }
 }

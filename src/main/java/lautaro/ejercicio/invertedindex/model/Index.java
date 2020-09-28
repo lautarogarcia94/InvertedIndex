@@ -5,4 +5,6 @@ public interface Index {
     void buildIndex(String phrase);
 
     String[] get(String word);
+
+    int getSize();
 }
