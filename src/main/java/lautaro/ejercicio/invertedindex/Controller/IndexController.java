@@ -14,5 +14,12 @@ public class IndexController {
     public void setInvertedIndex(Index invertedIndex) {
         this.invertedIndex = invertedIndex;
     }
-    
+
+    public void buildIndex(String[] phrases){
+        invertedIndex.buildIndex(phrases);
+    }
+
+    public String[] get(String word){
+        return invertedIndex.get(word);
+    }
 }
