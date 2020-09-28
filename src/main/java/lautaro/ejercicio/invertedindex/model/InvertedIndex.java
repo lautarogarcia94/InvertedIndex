@@ -1,5 +1,7 @@
 package lautaro.ejercicio.invertedindex.model;
 
+import lautaro.ejercicio.invertedindex.Controller.IndexController;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -10,6 +12,8 @@ import java.util.Map;
 public class InvertedIndex implements Index {
 
     private Map<String, HashSet<String>> wordToDocumentMap;
+    private final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
+
 
     public InvertedIndex() {
         wordToDocumentMap = new HashMap<>();
@@ -44,7 +48,12 @@ public class InvertedIndex implements Index {
 
     @Override
     public String[] get(String word) {
+        word = word.trim().toLowerCase().replaceAll("[^A-Za-z0-9\\s]", "");
         HashSet<String> hashSet = wordToDocumentMap.get(word);
+        if (hashSet == null) {
+            LOGGER.warn("No se encontro referencia a la palabra "+word);
+            return null;
+        }
         return hashSet.toArray(new String[0]);
     }
 }
