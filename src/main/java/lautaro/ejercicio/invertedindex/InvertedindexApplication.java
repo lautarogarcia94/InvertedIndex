@@ -1,6 +1,7 @@
 package lautaro.ejercicio.invertedindex;
 
 import lautaro.ejercicio.invertedindex.Controller.IndexController;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -9,6 +10,8 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class InvertedindexApplication {
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(InvertedindexApplication.class);
 
     public static void main(String[] args) {
 
@@ -20,21 +23,31 @@ public class InvertedindexApplication {
                 "Fatima Bhutto on Malala Yousafzai's fearless and still-controversial memoir",
                 "Grisham's sequel to A Time to Kill is a solid courtroom drama about racial prejudice marred by a flawless white hero, writes John O'Connell",
                 "This strange repackaging of bits and pieces does the Man Booker winner no favours, says Sam Leith",
-                "Another book with music related content",
-                ""
+                "Another book with music related content"
         };
+        controller.buildIndex(data);
 
-        controller.buildIndex(null);
+        LOGGER.info("######################");
+        imprimir("music", controller.get("music"));
+        LOGGER.info("######################");
+        imprimir("pieces", controller.get("pieces"));
+        LOGGER.info("######################");
+        imprimir("a", controller.get("a"));
+        LOGGER.info("######################");
+        imprimir("puerta", controller.get("puerta"));
 
-        String[] results = controller.get("muSIc");
+    }
 
-        // Debe mostrar 2
-        System.out.println(results.length);
-
-        // Debe mostrar [".... music, writes Peter Conrad","Another book with music related ..."]
-        System.out.println(Arrays.toString(results));
-
-
+    
+    private static void imprimir(String word, String[] phrases) {
+        if (phrases != null) {
+            LOGGER.info("La palabra " + word + " aparece en " + phrases.length + " frases"); //Loguea en cuantas frases se encuentra la palabra
+            for (int i = 0; i < phrases.length; i++) {
+                LOGGER.info("La frase " + (i + 1) + " es: " + phrases[i]);//Loguea cada frase
+            }
+        } else {
+            LOGGER.info("La palabra " + word + " no aparece en el indice");
+        }
     }
 
 }
